@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
-//todo : 0-00
-
+ 
 const Main = () => {
     const defaultMinutes = 25
     const [countdownMinutes, setCountdownMinutes] = useState(defaultMinutes)
@@ -12,7 +10,6 @@ const Main = () => {
 
     let time = initialTime * 60
     useEffect(() => {
-
         if (isRunning) {
             const interval = setInterval(() => {
                 if (time >= 0) {
@@ -37,8 +34,6 @@ const Main = () => {
         setInitialTime(startingMinutes)
     }
 
-    // const handleIsRunningChange = () => setIsRunning(prevState => !prevState);
-
     const handleReset = () => {
         setIsRunning(false)
         setCountdownMinutes(initialMinutes);
@@ -52,7 +47,6 @@ const Main = () => {
         } else {
             return '' + value
         }
-
     }
 
     return (
