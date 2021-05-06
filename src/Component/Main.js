@@ -1,29 +1,44 @@
 import React, { useState, useEffect } from 'react'
  
 const Main = () => {
-    const defaultMinutes = 25
-    const [countdownMinutes, setCountdownMinutes] = useState(defaultMinutes)
+    const DATAS = [
+        {
+            name:"Pomodoro",
+            value:25
+        },
+        {
+            name:"Short Break",
+            value:5
+        },
+        {
+            name:"Long Break",
+            value:10
+        }
+    ]
+    const DEFAULTMINUTES = 25
+    const [countdownMinutes, setCountdownMinutes] = useState(DEFAULTMINUTES)
     const [countdownSeconds, setCountdownSeconds] = useState(0)
     const [isRunning, setIsRunning] = useState(false)
-    const [initialTime, setInitialTime] = useState(defaultMinutes)
-    const [initialMinutes, setInitialMinutes] = useState(defaultMinutes)
+    const [initialTime, setInitialTime] = useState(DEFAULTMINUTES)
+    const [initialMinutes, setInitialMinutes] = useState(DEFAULTMINUTES)
 
     let time = initialTime * 60
-    useEffect(() => {
-        if (isRunning) {
-            const interval = setInterval(() => {
-                if (time >= 0) {
-                    setInitialTime(time / 60)
-                    setCountdownMinutes(Math.floor(time / 60))
-                    setCountdownSeconds(time % 60)
-                    time--
-                } else {
-                    clearInterval(interval)
-                }
 
-            }, 1000);
-            return () => clearInterval(interval)
+    useEffect(() => {
+        if(!isRunning){
+            return
         }
+        const interval = setInterval(() => {
+            if(time<0){
+                clearInterval(interval)
+                return
+            }
+            setInitialTime(time / 60)
+            setCountdownMinutes(Math.floor(time / 60))
+            setCountdownSeconds(time % 60) 
+            time--
+        }, 1000);
+        return () => clearInterval(interval)
     }, [isRunning])
 
     const changeTimer = (startingMinutes) => {
@@ -52,9 +67,10 @@ const Main = () => {
     return (
         <div>
             <div className="stopwatch">
-                <button onClick={() => changeTimer(25)}>Pomodoro</button>
-                <button onClick={() => changeTimer(5)}>Short Break</button>
-                <button onClick={() => changeTimer(10)}>Long Break</button>
+                {DATAS.map((data,index)=>{
+                    return <button onClick={() => changeTimer(data.value)} key={index}>{data.name}</button> 
+                    }   
+                )}
             </div>
             <div className="stopwatch">
                 <h1>{display(countdownMinutes)}:{display(countdownSeconds)}</h1>

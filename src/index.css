@@ -1,7 +1,5 @@
 body {
-    /* background: #e8e7e7; */
     font-family: arial;
-    /* text-transform: uppercase; */
 }
 
 header {
@@ -23,8 +21,6 @@ header h1 {
 
 .stopwatch {
     align-items: center;
-    /* padding: 15px 10px 5px 10px;
-    margin: -5px -10px -5px 10px; */
 }
 
 .stopwatch {
