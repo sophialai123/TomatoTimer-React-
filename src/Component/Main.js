@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react'
- 
+
 const Main = () => {
-    const DATAS = [
+
+    const timerValues = [
         {
-            name:"Pomodoro",
-            value:25
+            name: "Pomodoro",
+            value: 25
         },
         {
-            name:"Short Break",
-            value:5
+            name: "Short Break",
+            value: 5
         },
         {
-            name:"Long Break",
-            value:10
+            name: "Long Break",
+            value: 10
         }
     ]
+
     const DEFAULTMINUTES = 25
     const [countdownMinutes, setCountdownMinutes] = useState(DEFAULTMINUTES)
     const [countdownSeconds, setCountdownSeconds] = useState(0)
@@ -25,17 +27,17 @@ const Main = () => {
     let time = initialTime * 60
 
     useEffect(() => {
-        if(!isRunning){
+        if (!isRunning) {
             return
         }
         const interval = setInterval(() => {
-            if(time<0){
+            if (time < 0) {
                 clearInterval(interval)
                 return
             }
             setInitialTime(time / 60)
             setCountdownMinutes(Math.floor(time / 60))
-            setCountdownSeconds(time % 60) 
+            setCountdownSeconds(time % 60)
             time--
         }, 1000);
         return () => clearInterval(interval)
@@ -67,9 +69,11 @@ const Main = () => {
     return (
         <div>
             <div className="stopwatch">
-                {DATAS.map((data,index)=>{
-                    return <button onClick={() => changeTimer(data.value)} key={index}>{data.name}</button> 
-                    }   
+                {timerValues.map((timerValue, index) => (
+                    <button onClick={() => changeTimer(timerValue.value)}
+                        key={index}>{timerValue.name}
+                    </button>
+                )
                 )}
             </div>
             <div className="stopwatch">
