@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react'
 
 const Main = () => {
-
     const timerValues = [
         {
-            name: "Pomodoro",
-            value: 25
+            name: 'Pomodoro',
+            value: 25,
         },
         {
-            name: "Short Break",
-            value: 5
+            name: 'Short Break',
+            value: 5,
         },
         {
-            name: "Long Break",
-            value: 10
-        }
+            name: 'Long Break',
+            value: 10,
+        },
     ]
 
     const DEFAULTMINUTES = 25
@@ -39,7 +38,7 @@ const Main = () => {
             setCountdownMinutes(Math.floor(time / 60))
             setCountdownSeconds(time % 60)
             time--
-        }, 1000);
+        }, 1000)
         return () => clearInterval(interval)
     }, [isRunning])
 
@@ -53,14 +52,14 @@ const Main = () => {
 
     const handleReset = () => {
         setIsRunning(false)
-        setCountdownMinutes(initialMinutes);
-        setCountdownSeconds(0);
+        setCountdownMinutes(initialMinutes)
+        setCountdownSeconds(0)
         setInitialTime(initialMinutes)
     }
 
     const display = (value) => {
         if (value >= 0 && value <= 9) {
-            return "0" + value
+            return '0' + value
         } else {
             return '' + value
         }
@@ -68,16 +67,17 @@ const Main = () => {
 
     return (
         <div>
-            <div className="stopwatch">
+            <div className='stopwatch'>
                 {timerValues.map((timerValue, index) => (
-                    <button onClick={() => changeTimer(timerValue.value)}
-                        key={index}>{timerValue.name}
+                    <button onClick={() => changeTimer(timerValue.value)} key={index}>
+                        {timerValue.name}
                     </button>
-                )
-                )}
+                ))}
             </div>
-            <div className="stopwatch">
-                <h1>{display(countdownMinutes)}:{display(countdownSeconds)}</h1>
+            <div className='stopwatch'>
+                <h1>
+                    {display(countdownMinutes)}:{display(countdownSeconds)}
+                </h1>
                 <button onClick={() => setIsRunning(true)}>Start</button>
                 <button onClick={() => setIsRunning(false)}>Stop</button>
                 <button onClick={handleReset}>Reset</button>
