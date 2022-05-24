@@ -10,23 +10,26 @@ header {
   align-items: center;
   background-color: #e8e7e7;
   border-bottom: solid 2px #e8e7e7;
+  width: 500px;
+  margin: auto;
+  border-radius: 5px;
+  margin-top: 100px;
 }
 
 header h1 {
   flex-grow: 1;
-
   letter-spacing: 2px;
-  font-weight: normal;
+  font-weight: bold;
+  font-size: 40px;
 }
+
 
 .stopwatch {
   align-items: center;
-}
-
-.stopwatch {
   text-align: center;
   padding: 15px 10px 5px 10px;
-  margin: -5px -10px -5px 10px;
+  margin: 55px -10px -5px 10px;
+
 }
 
 .stopwatch h1 {
@@ -37,7 +40,7 @@ header h1 {
 }
 
 .stopwatch button {
-  margin: 8px 5px;
+  margin: 18px 15px;
   background-color: #44338d;
   border-radius: 5px;
   padding: 7px 8px;
@@ -47,4 +50,11 @@ header h1 {
   font-weight: bold;
   text-shadow: none;
   text-transform: uppercase;
+  cursor: pointer;
+  transform: scale(1.0);
+
+}
+
+.stopwatch button:hover {
+  background-color: orchid;
 }

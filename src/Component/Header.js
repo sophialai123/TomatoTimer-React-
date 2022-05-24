@@ -3,7 +3,7 @@ import React from 'react'
 const Header = () => {
   return (
     <header>
-      <h1>TomatoTimer</h1>
+      <h1>🍅 Tomato Timer 🍅</h1>
     </header>
   )
 }
